@@ -11,13 +11,13 @@ bgimg=loadImage("jungle.jpg")}
 
 
 function setup() {
-  createCanvas(400, 400);
-  bg=createSprite(200,200,200,200)
+  createCanvas(height, width);
+  bg=createSprite(height-200,width-200,200,200)
   bg.addImage(bgimg)
- monkey = createSprite(50,200,20,50);
+ monkey = createSprite(height-350,width-200,20,50);
 monkey.addAnimation("monkeyrun",monkeyrun);
   monkey.scale=0.12
- ground=createSprite(300,380,800,20)
+ ground=createSprite(height-100,width-20,800,20)
   ground.visible=false  
   bananaGroup=new Group()
     stoneGroup=new Group()
@@ -53,18 +53,20 @@ if(bg.x<0){
  }
  if(monkey.isTouching(stoneGroup)) {
    monkey.scale=0.12}
-
+ camera.position.x=bananaGroup.x
+  camera.position.y=bananaGroup.y
   
 
  drawSprites()
-   text("score "+ score, 350, 100);
+   text("score "+ score, height-50,width-300);
   spawnObstacles() 
   spawnbananas()
+
 }
 
 function spawnbananas(){
   if (frameCount % 80 === 0) {
-     banana = createSprite(400,320,40,10);
+     banana = createSprite(height,width-80,40,10);
     banana.y = Math.round(random(220,280))
     banana.addImage(bananaimg);
     banana.scale = 0.1
@@ -80,7 +82,7 @@ function spawnbananas(){
 }
 function spawnObstacles() {
   if(frameCount % 300 === 0) {
-    stone = createSprite(400,365,10,40);
+    stone = createSprite(height,width-35,10,40);
     stone.velocityX = - 5
     stone.addImage(stoneimg);           
     stone.scale = 0.1;
