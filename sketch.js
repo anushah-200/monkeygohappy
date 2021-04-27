@@ -107,5 +107,17 @@ function spawnObstacles() {
 
 
 
+ 
+
+
+
+
+
+
+
+
+
+
+
 
    
